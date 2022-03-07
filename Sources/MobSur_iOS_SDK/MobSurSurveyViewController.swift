@@ -37,7 +37,7 @@ class MobSurSurveyViewController: UIViewController, WKNavigationDelegate {
             self.isModalInPresentation = true
         }
         
-        let closeImage = UIImage(named: "SurveyCloseButton")?.withRenderingMode(.alwaysTemplate)
+        let closeImage = UIImage(named: "SurveyCloseButton", in: Bundle.module, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         
         closeButton.setImage(closeImage, for: .normal)
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
@@ -77,8 +77,12 @@ class MobSurSurveyViewController: UIViewController, WKNavigationDelegate {
         
         webView.navigationDelegate = self
         
-        let myURL = URL(string: survey.url)
-        let myRequest = URLRequest(url: myURL!)
+        guard let myURL = URL(string: survey.url) else {
+            close()
+            return
+        }
+        
+        let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
     }
     
