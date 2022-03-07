@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "MobSur-iOS-SDK",
+    name: "MobSur_iOS_SDK",
     platforms: [.iOS(.v12)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "MobSur-iOS-SDK",
-            targets: ["MobSur-iOS-SDK"]),
+            name: "MobSur_iOS_SDK",
+            targets: ["MobSur_iOS_SDK"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -20,10 +20,10 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "MobSur-iOS-SDK",
+            name: "MobSur_iOS_SDK",
             dependencies: []),
         .testTarget(
-            name: "MobSur-iOS-SDKTests",
-            dependencies: ["MobSur-iOS-SDK"]),
+            name: "MobSur_iOS_SDKTests",
+            dependencies: ["MobSur_iOS_SDK"]),
     ]
 )
