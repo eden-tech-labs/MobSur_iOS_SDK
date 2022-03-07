@@ -1,6 +1,5 @@
-# MobSur-iOS-SDK
+# MobSur iOS SDK
 
----
 ## Table of contents
 * [Requirements](#requirements) (public)
 * [Setup](#setup) (public)
@@ -31,7 +30,10 @@ import MobSur_iOS_SDK
 ```swift
 MobSurSDK.shared.setup(appID: appID, userID: userID)
 // OR
-MobSurSDK.shared.setup(appID: appID) // In case you do not have the user id
+
+// In case you do not have the user id during the setup
+// IMPORTANT: In this case, to receive surveys, somewhere in user flow you should call MobSurSDK.shared.updateUser(id: newUserId)
+MobSurSDK.shared.setup(appID: appID)
 ```
 
 - Trigger an event
@@ -45,6 +47,13 @@ MobSurSDK.shared.event(name: eventName)
 ```swift
 MobSurSDK.shared.updateUser(id: newUserId)
 ```
+
+## FAQ
+
+- My surveys do not appear on the first event
+This may happen if you fire the `event` method too soon after the `setup` or `updateUser` methods.
+After the SDK receives the userID, it requests the surveys from the server.
+If you fire an event before you have survey for this event, it's ignored.
     
 ## More info
 
