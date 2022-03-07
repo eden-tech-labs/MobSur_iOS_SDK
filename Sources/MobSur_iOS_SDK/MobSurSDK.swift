@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 public class MobSurSDK {
-    static let shared = MobSurSDK()
+    public static let shared = MobSurSDK()
     
     private var appID: String?
     
@@ -78,7 +78,7 @@ public class MobSurSDK {
     }
     
     
-    func setup(appID: String, userID: String? = nil) {
+    public func setup(appID: String, userID: String? = nil) {
         self.appID = appID
         
         if let userID = userID {
@@ -88,11 +88,11 @@ public class MobSurSDK {
         }
     }
     
-    func updateUser(id: String) {
+    public func updateUser(id: String) {
         self.userID = id
     }
     
-    func event(name eventName: String) {
+    public func event(name eventName: String) {
         print("SurveyEvent: \(eventName)")
         
         surveyLoop: for survey in surveys {
