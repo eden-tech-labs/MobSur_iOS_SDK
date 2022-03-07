@@ -20,29 +20,31 @@ https://github.com/eden-tech-labs/MobSur_iOS_SDK
 5. Click Add Package button
     
 ## Usage
-- Import the Package (required)
+### Import the Package (required)
 ```swift
 import MobSur_iOS_SDK
 ```
 
-- Initialize the SDK (required)
+### Initialize the SDK (required)
 
 ```swift
 MobSurSDK.shared.setup(appID: appID, userID: userID)
-// OR
+
+// --- OR ---
 
 // In case you do not have the user id during the setup
-// IMPORTANT: In this case, to receive surveys, somewhere in user flow you should call MobSurSDK.shared.updateUser(id: newUserId)
 MobSurSDK.shared.setup(appID: appID)
 ```
 
-- Trigger an event
+> :warning: **If you do not provide userID**: In this case, to receive surveys, somewhere in the user flow you should call `MobSurSDK.shared.updateUser(id: newUserId)`
+
+### Trigger an event
 
 ```swift
 MobSurSDK.shared.event(name: eventName)
 ```
 
-- Change user identifier
+### Change user identifier
 
 ```swift
 MobSurSDK.shared.updateUser(id: newUserId)
