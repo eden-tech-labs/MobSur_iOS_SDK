@@ -14,7 +14,7 @@
 1. In Xcode, go to File > Add Packages...
 2. In the search bar on the top right corner of the newly opned window enter
 ```
-https://github.com/eden-tech-labs/MobSur-iOS-SDK
+https://github.com/eden-tech-labs/MobSur_iOS_SDK
 ```
 3. Select MobSur-iOS-SDK from the list
 4. Select your Target if there is more than one
