@@ -1,0 +1,303 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "MobSur_iOS_Framework",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "MobSur_iOS_Framework"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MobSurSDK",
+        "printedName": "MobSurSDK",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MobSurSDK",
+                "printedName": "MobSur_iOS_Framework.MobSurSDK",
+                "usr": "s:20MobSur_iOS_Framework0aB3SDKC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:20MobSur_iOS_Framework0aB3SDKC6sharedACvpZ",
+            "mangledName": "$s20MobSur_iOS_Framework0aB3SDKC6sharedACvpZ",
+            "moduleName": "MobSur_iOS_Framework",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MobSurSDK",
+                    "printedName": "MobSur_iOS_Framework.MobSurSDK",
+                    "usr": "s:20MobSur_iOS_Framework0aB3SDKC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:20MobSur_iOS_Framework0aB3SDKC6sharedACvgZ",
+                "mangledName": "$s20MobSur_iOS_Framework0aB3SDKC6sharedACvgZ",
+                "moduleName": "MobSur_iOS_Framework",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setup",
+            "printedName": "setup(appID:userID:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20MobSur_iOS_Framework0aB3SDKC5setup5appID04userH0ySS_SSSgtF",
+            "mangledName": "$s20MobSur_iOS_Framework0aB3SDKC5setup5appID04userH0ySS_SSSgtF",
+            "moduleName": "MobSur_iOS_Framework",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "updateUser",
+            "printedName": "updateUser(id:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20MobSur_iOS_Framework0aB3SDKC10updateUser2idySS_tF",
+            "mangledName": "$s20MobSur_iOS_Framework0aB3SDKC10updateUser2idySS_tF",
+            "moduleName": "MobSur_iOS_Framework",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "event",
+            "printedName": "event(name:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:20MobSur_iOS_Framework0aB3SDKC5event4nameySS_tF",
+            "mangledName": "$s20MobSur_iOS_Framework0aB3SDKC5event4nameySS_tF",
+            "moduleName": "MobSur_iOS_Framework",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:20MobSur_iOS_Framework0aB3SDKC",
+        "mangledName": "$s20MobSur_iOS_Framework0aB3SDKC",
+        "moduleName": "MobSur_iOS_Framework",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "MobSur_iOS_Framework",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebKit",
+        "printedName": "WebKit",
+        "declKind": "Import",
+        "moduleName": "MobSur_iOS_Framework"
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "BooleanLiteral",
+      "offset": 305,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1530,
+      "length": 11,
+      "value": "\"MobSurSDK\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1583,
+      "length": 40,
+      "value": "\"https:\/\/mobsur.appget.link\/api\/surveys\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1661,
+      "length": 13,
+      "value": "\"MobSur_106_\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1717,
+      "length": 18,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1727,
+      "length": 7,
+      "value": "\"surveys\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1780,
+      "length": 19,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1790,
+      "length": 8,
+      "value": "\"eventLog\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1835,
+      "length": 18,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1845,
+      "length": 7,
+      "value": "\"user_id\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 8486,
+      "length": 15,
+      "value": "\"counted_event\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 8486,
+      "length": 15,
+      "value": "\"counted_event\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSurveyViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3651,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-Framework\/MobSurSurveyViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 188,
+      "length": 26,
+      "value": "\"MobSur_iOS_Framework.MobSurSurveyViewController\""
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+framework module MobSur_iOS_Framework {
+  umbrella header "MobSur_iOS_Framework.h"
+
+  export *
+  module * { export * }
+}
+
+module MobSur_iOS_Framework.Swift {
+  header "MobSur_iOS_Framework-Swift.h"
+  requires objc
+}
