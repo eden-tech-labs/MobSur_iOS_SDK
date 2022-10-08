@@ -22,7 +22,7 @@ https://github.com/eden-tech-labs/MobSur_iOS_SDK
 ## Usage
 ### Import the Package (required)
 ```swift
-import MobSur_iOS_SDK
+import MobSur_iOS_Framework
 ```
 
 ### Initialize the SDK (required)
