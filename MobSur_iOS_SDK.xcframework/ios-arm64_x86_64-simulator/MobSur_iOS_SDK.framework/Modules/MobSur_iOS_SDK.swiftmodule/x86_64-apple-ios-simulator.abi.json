@@ -80,7 +80,7 @@
           {
             "kind": "Function",
             "name": "setup",
-            "printedName": "setup(appID:userID:)",
+            "printedName": "setup(appID:userID:debug:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -107,11 +107,18 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Func",
-            "usr": "s:14MobSur_iOS_SDK0abD0C5setup5appID04userG0ySS_SSSgtF",
-            "mangledName": "$s14MobSur_iOS_SDK0abD0C5setup5appID04userG0ySS_SSSgtF",
+            "usr": "s:14MobSur_iOS_SDK0abD0C5setup5appID04userG05debugySS_SSSgSbtF",
+            "mangledName": "$s14MobSur_iOS_SDK0abD0C5setup5appID04userG05debugySS_SSSgSbtF",
             "moduleName": "MobSur_iOS_SDK",
             "declAttributes": [
               "AccessControl"
@@ -210,78 +217,92 @@
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
-      "kind": "StringLiteral",
-      "offset": 1567,
-      "length": 44,
-      "value": "\"https:\/\/api-staging.mobsur.com\/api\/surveys\""
+      "kind": "BooleanLiteral",
+      "offset": 340,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1741,
+      "offset": 1621,
+      "length": 36,
+      "value": "\"https:\/\/api.mobsur.com\/api\/surveys\""
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
+      "kind": "StringLiteral",
+      "offset": 1706,
       "length": 13,
       "value": "\"MobSur_106_\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1797,
+      "offset": 1762,
       "length": 18,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1807,
+      "offset": 1772,
       "length": 7,
       "value": "\"surveys\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1860,
+      "offset": 1825,
       "length": 19,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1870,
+      "offset": 1835,
       "length": 8,
       "value": "\"eventLog\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1915,
+      "offset": 1880,
       "length": 18,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 1925,
+      "offset": 1890,
       "length": 7,
       "value": "\"user_id\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2394,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 8122,
+      "offset": 9191,
       "length": 15,
       "value": "\"counted_event\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSDK.swift",
       "kind": "StringLiteral",
-      "offset": 8122,
+      "offset": 9191,
       "length": 15,
       "value": "\"counted_event\""
     },
     {
       "filePath": "\/Users\/lachezartodorov\/Documents\/Development\/iOS\/Frameworks\/MobSur-iOS-Framework\/MobSur-iOS-SDK\/MobSurSurveyViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 3651,
+      "offset": 3656,
       "length": 5,
       "value": "false"
     },

@@ -4,9 +4,13 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Assets.car</key>
+		<data>
+		z/CGCHggMeCXbndwRJ+ECM4E/pc=
+		</data>
 		<key>Headers/MobSur-iOS-SDK.h</key>
 		<data>
-		8rXsx4uC7oljg/1Mv7/If3+UVmI=
+		a3m2plmnv8kvVS5HNclEtUoIbXc=
 		</data>
 		<key>Headers/MobSur_iOS_SDK-Swift.h</key>
 		<data>
@@ -14,27 +18,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		bdJLa6x1/YSx4cyGm/Am0xy7Zlw=
+		Swbx6PIFeEsUOJTc6EeSVXHl0jI=
 		</data>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		L7xalqrlzz3pnq6agYSGg4lH9h0=
+		vCBa36alZboFGt8TmU4rWEHYwKs=
 		</data>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		fkgWAlGt5K6n+eyZQlhw4cZa9s8=
+		6EWC1RNxjjxX23+KZCW6HXcK43E=
 		</data>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		78DDGmVru9nAIoUl+U/CqeaFY/g=
+		yUAnsOyzzWy7zr2zXHlf6R3YKxU=
 		</data>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		fkgWAlGt5K6n+eyZQlhw4cZa9s8=
+		6EWC1RNxjjxX23+KZCW6HXcK43E=
 		</data>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		S4H9BuqmnRoh4pu4wZVWA1emW9A=
+		6BUNUGHa372FqGYyYTmKAIMn75w=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,11 +47,18 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Assets.car</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VZ7Lx0+r5MgLlqcdW/+qgoCZlLJixibywo7qTp8LmJY=
+			</data>
+		</dict>
 		<key>Headers/MobSur-iOS-SDK.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jadOR6lwhIwxE5VK/bplZ3VoJWzOQaYnHy6Z0CMbSn8=
+			FLzgY8wornsuTsx0S3mYFAOUAAidlqujSBS0L07oA9A=
 			</data>
 		</dict>
 		<key>Headers/MobSur_iOS_SDK-Swift.h</key>
@@ -61,35 +72,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IUVXccqFpsQf/4NRZaZZojdBISnOjFbOFFSIXZgwceA=
+			BXzTQsKTEQLVrIbWluNCn0/X/rUf4TUfSc43IwRtHTs=
 			</data>
 		</dict>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6xhkzfxoZ8OQcm2ajYjsuAxVmxJSvGuKXMMqBTfYYiI=
+			487aQLbcMJWuA2iCMBHoZ/f3rll+43sy+HDzBmg8kTM=
 			</data>
 		</dict>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mX77jtRdikRARODOMOGBDwqH4eOx3OmaiaoaAUxURps=
+			ZZhZ6NDOikMhsYwLJX7weKneTzKnSwsnYIbCAxteuME=
 			</data>
 		</dict>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6xhkzfxoZ8OQcm2ajYjsuAxVmxJSvGuKXMMqBTfYYiI=
+			487aQLbcMJWuA2iCMBHoZ/f3rll+43sy+HDzBmg8kTM=
 			</data>
 		</dict>
 		<key>Modules/MobSur_iOS_SDK.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EywWvEOirhx0Cy4y47DRU139cV9oI6Rk/o711Jywxcc=
+			/LvVUPel3V+SVBrIj3KwYn9ahftuo4P9eaQPNQzqDh0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
