@@ -38,6 +38,9 @@ MobSurSDK.shared.setup(appID: appID)
 
 > :warning: **If you do not provide userID**: In this case, to receive surveys, somewhere in the user flow you should call `MobSurSDK.shared.updateUser(id: newUserId)`
 
+> If you want to check if everything works as expected, you can use the `debug` parameter on the `setup` function. This will print information about the received surveys and tracked events.  
+> `MobSurSDK.shared.setup(appID: appID, userID: userID, debug: true)`
+
 ### Trigger an event
 
 ```swift
