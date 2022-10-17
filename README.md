@@ -9,7 +9,8 @@
 ## Requirements
 - Platform: iOS (version >= 12)
 
-## Setup
+## Install the SDK
+### Using Swift Package Manager
 1. In Xcode, go to File > Add Packages...
 2. In the search bar on the top right corner of the newly opned window enter
 ```
@@ -18,7 +19,35 @@ https://github.com/eden-tech-labs/MobSur_iOS_SDK
 3. Select MobSur-iOS-SDK from the list
 4. Select your Target if there is more than one
 5. Click Add Package button
-    
+6. Proceed to the **Usage** section of this document
+
+### Using Cocoapods
+If this is your first pod dependency, follow the instructions on [cocoapods.org](https://cocoapods.org)
+If you already have `Podfile` in your project you should add the following:
+```
+target 'YourAppTarget' do
+
+    #Other Pod related information
+
+    pod 'MobSurSDK', '~> 1.0.3'
+end
+```
+
+After that open the console, navigate to the project directory and run `pod install`
+The pod should be installed and you can proceed to the **Usage** section of this document.
+
+### Without package manager (offline)
+This type of installation is suitable if you want to keep everything related to your project local and do not depend on the network traffic.
+
+1. Download the SDK from [https://github.com/eden-tech-labs/MobSur_iOS_SDK](https://github.com/eden-tech-labs/MobSur_iOS_SDK)
+2. Open your project or workspace in XCode
+3. In the **Project Navigator** (shortcut **⌘** + 1) select the project.
+4. In the newly opened project preview, select your **target.**
+5. Then in **general** tab scroll to Frameworks, **Libraries, and Embedded Content** and click the + button under the list
+6. In the drop down, on the bottom left corner of the popup select **Add files**.
+7. Locate the downloaded (unarchived) SDK and select **MobSur_iOS_SDK.xcframework**
+8. Then proceed to the **Usage** section of this document.
+  
 ## Usage
 ### Import the Package (required)
 ```swift
