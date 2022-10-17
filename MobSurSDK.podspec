@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name             = 'MobSur_iOS_SDK_Pod'
-  s.version          = '1.0.2'
+  s.name             = 'MobSurSDK'
+  s.version          = '1.0.3'
   s.summary          = 'Implement surveys in your app with just a few lines of code.'
 
   s.description      = <<-DESC
@@ -23,7 +23,5 @@ All the other work is done by the marketing team in the MobSur dashboard.
   s.ios.vendored_frameworks = 'MobSur_iOS_SDK.xcframework'
 
   s.frameworks = 'UIKit'
-
-  s.deprecated = true
 
 end
