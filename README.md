@@ -8,6 +8,8 @@
 
 ## Requirements
 - Platform: iOS (version >= 12)
+- Supported Destinations: iPhone and iPad
+- Minimum version of Swift: 4.0
 
 ## Install the SDK
 ### Using Swift Package Manager
