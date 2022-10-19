@@ -58,14 +58,60 @@ import MobSur_iOS_SDK
 
 ### Initialize the SDK (required)
 
+**For UIKit:**
+
 ```swift
-MobSurSDK.shared.setup(appID: appID, userID: userID)
+import UIKit
+import MobSur_iOS_SDK
 
-// --- OR ---
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: 
+	[UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+	  
+		// userID and debug are optional parameters
+		// If you do not know the user id at this point your can pass nil and set it later
+		MobSurSDK.shared.setup(appID: "YourAppID", userID: "123", debug: true)
+	  
+		// Remaining contents of didFinishLaunchingWithOptions method  
+	  
+	  return true
+	}
+  
+// Remaining contents of your AppDelegate Class
+}
 
-// In case you do not have the user id during the setup
-MobSurSDK.shared.setup(appID: appID)
 ```
+
+**For Swift UI:**
+
+
+```swift
+import SwiftUI
+import MobSur_iOS_SDK
+
+
+// no changes in your AppDelegate class
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        MobSurSDK.shared.setup(appID: "YourAppID", userID: "123", debug: true)
+        return true
+    }
+}
+
+@main
+struct MyAppName: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+
+```
+
 
 > :warning: **If you do not provide userID**: In this case, to receive surveys, somewhere in the user flow you should call `MobSurSDK.shared.updateUser(id: newUserId)`
 
@@ -86,7 +132,8 @@ MobSurSDK.shared.updateUser(id: newUserId)
 
 ## FAQ
 
-- My surveys do not appear on the first event
+- My surveys do not appear on the first event:
+
 This may happen if you fire the `event` method too soon after the `setup` or `updateUser` methods.
 After the SDK receives the userID, it requests the surveys from the server.
 If you fire an event before you have survey for this event, it's ignored.
