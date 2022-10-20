@@ -4,6 +4,7 @@
 * [Requirements](#requirements) (public)
 * [Setup](#setup) (public)
 * [Usage](#usage) (public)
+* [Sample project](#sampleApp) (public)
 * [Building SDK](#building) (private)
 
 ## Requirements
@@ -129,6 +130,10 @@ MobSurSDK.shared.event(name: eventName)
 ```swift
 MobSurSDK.shared.updateUser(id: newUserId)
 ```
+
+## Sample project
+
+A complete project with the SDK can be found in our [GitHub repository](https://github.com/eden-tech-labs/MobSur_iOS_App).
 
 ## FAQ
 
