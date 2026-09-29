@@ -3,10 +3,6 @@
 Show [MobSur](https://mobsur.com) in-app surveys when events in your app match the rules your team sets
 in the MobSur dashboard.
 
-> **Release status:** 1.1.0 is prepared on the `sdk-contract-1.1` branch but has **not been tagged,
-> pushed or published to CocoaPods trunk yet**. Until it is, install it from a local checkout (see below).
-> The `from: "1.1.0"` / `~> 1.1` lines only work once the release exists.
-
 ## Table of contents
 * [Requirements](#requirements)
 * [Install](#install)
@@ -24,8 +20,7 @@ in the MobSur dashboard.
 
 ## Install
 
-### Swift Package Manager
-Once 1.1.0 is tagged:
+### Swift Package Manager (recommended)
 1. In Xcode, choose **File > Add Package Dependencies…**
 2. Enter `https://github.com/eden-tech-labs/MobSur_iOS_SDK` and pick **Up to Next Major Version** from `1.1.0`.
 3. Add the **MobSur_iOS_SDK** library to your app target.
@@ -35,22 +30,19 @@ Or in `Package.swift`:
 .package(url: "https://github.com/eden-tech-labs/MobSur_iOS_SDK", from: "1.1.0")
 ```
 
-Until then, clone this repository and use **File > Add Package Dependencies… > Add Local…**, or
-`.package(path: "../MobSur_iOS_SDK")`.
-
 ### CocoaPods
-Once 1.1.0 is on CocoaPods trunk:
 ```ruby
 pod 'MobSurSDK', '~> 1.1'
 ```
-Until then, point at a local checkout:
-```ruby
-pod 'MobSurSDK', :path => '../MobSur_iOS_SDK'
-```
 Then run `pod install`.
 
+CocoaPods trunk becomes read-only on December 2, 2026, so 1.1.x is the last MobSur release published
+there. Later versions ship through Swift Package Manager only.
+
 ### Manually
-Drag `MobSur_iOS_SDK.xcframework` into your project, and under your target's **General > Frameworks,
+Download `MobSur_iOS_SDK.xcframework.zip` from the
+[latest release](https://github.com/eden-tech-labs/MobSur_iOS_SDK/releases/latest), unzip it, drag
+`MobSur_iOS_SDK.xcframework` into your project, and under your target's **General > Frameworks,
 Libraries, and Embedded Content** set it to **Embed & Sign**.
 
 ## Usage
