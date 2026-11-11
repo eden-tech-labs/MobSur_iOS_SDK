@@ -106,8 +106,9 @@ MobSurSDK.shared.updateUser(id: newUserID)
 ```
 
 When the ID differs from the current one, the SDK forgets the previous person's cached surveys and
-experiments, occurrence counters, completed surveys and experiments already run, and fetches for the new
-person. Attributes are kept.
+experiments, occurrence counters and completed surveys, and fetches for the new person. Attributes are
+kept, and so is the record of experiments each person has run, so switching accounts and back never shows
+someone an experiment twice.
 
 ### Describe the person (attributes)
 
