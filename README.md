@@ -1,33 +1,34 @@
 # MobSur iOS SDK
 
-Show [MobSur](https://mobsur.com) in-app surveys when events in your app match the rules your team sets
-in the MobSur dashboard.
+Show [MobSur](https://mobsur.com) in-app surveys and in-app message experiments when events in your app
+match the rules your team sets.
 
 ## Table of contents
 * [Requirements](#requirements)
 * [Install](#install)
 * [Usage](#usage)
 * [How surveys are chosen](#how-surveys-are-chosen)
+* [In-app message experiments](#in-app-message-experiments)
 * [Identity and monthly tracked users](#identity-and-monthly-tracked-users)
 * [Privacy](#privacy)
+* [Migrating from 1.1.x](#migrating-from-11x)
 * [Migrating from 1.0.x](#migrating-from-10x)
 * [FAQ](#faq)
 
 ## Requirements
-- iOS 12.0 or later, iPhone and iPad
-- Xcode 26 or later. The binary is built with Xcode 26.6 (Swift 6.3, Swift 5 language mode, library
-  evolution enabled); Xcode 26.6 is the version it has been verified with.
+- iOS 15.0 or later, iPhone and iPad
+- Xcode 26 or later
 
 ## Install
 
 ### Swift Package Manager (recommended)
 1. In Xcode, choose **File > Add Package Dependencies…**
-2. Enter `https://github.com/eden-tech-labs/MobSur_iOS_SDK` and pick **Up to Next Major Version** from `1.1.0`.
+2. Enter `https://github.com/eden-tech-labs/MobSur_iOS_SDK` and pick **Up to Next Major Version** from `1.2.0`.
 3. Add the **MobSur_iOS_SDK** library to your app target.
 
 Or in `Package.swift`:
 ```swift
-.package(url: "https://github.com/eden-tech-labs/MobSur_iOS_SDK", from: "1.1.0")
+.package(url: "https://github.com/eden-tech-labs/MobSur_iOS_SDK", from: "1.2.0")
 ```
 
 ### CocoaPods
@@ -84,10 +85,11 @@ struct MyApp: App {
 - `appID`: the App ID from the MobSur dashboard.
 - `userID` (optional): a stable identifier for the person. Read
   [Identity](#identity-and-monthly-tracked-users) before passing `nil`.
-- `debug` (optional): logs what the SDK does (requests, received surveys, rule decisions) to the
-  console with a `MobSur:` prefix. Nothing is logged when it is `false`.
+- `debug` (optional): logs what the SDK does (requests, received surveys and experiments, rule
+  decisions) to the console with a `MobSur:` prefix. Nothing is logged when it is `false`.
 
-Every method can be called from any thread and never throws. Calls made before `setup` are ignored.
+Every method can be called from any thread and never throws. Calls made before `setup` are ignored,
+except `setAttributes(_:)` and the two callbacks below.
 
 ### Send events
 
@@ -103,8 +105,42 @@ Use the same event names as the dashboard rules; matching is exact and case-sens
 MobSurSDK.shared.updateUser(id: newUserID)
 ```
 
-When the ID differs from the current one, the SDK forgets the previous person's cached surveys,
-occurrence counters and completed surveys, and fetches surveys for the new person.
+When the ID differs from the current one, the SDK forgets the previous person's cached surveys and
+experiments, occurrence counters and completed surveys, and fetches for the new person. Attributes are
+kept, and so is the record of experiments each person has run, so switching accounts and back never shows
+someone an experiment twice.
+
+### Describe the person (attributes)
+
+```swift
+MobSurSDK.shared.setAttributes(["is_subscribed": false, "days_since_install": 7])
+```
+
+Attributes decide which [experiments](#in-app-message-experiments) a person is in. Values must be
+strings, numbers or booleans; anything else is ignored (and logged in debug mode). Attributes are merged
+into the ones set before and kept across launches; a `nil` value removes a key. When anything changes,
+the SDK fetches again (occurrence counts are kept), and no experiment runs until that fetch succeeds.
+You can call it before `setup`.
+
+### Handle the call to action and veto overlays
+
+```swift
+MobSurSDK.shared.onAction = { action in
+    // e.g. "myapp://paywall", after the message sheet has closed
+    router.open(action)
+}
+MobSurSDK.shared.canShowOverlay = {
+    !paywallIsOnScreen
+}
+```
+
+- `onAction` receives an experiment message's call to action after the person taps it and the sheet has
+  closed. Without it, the action is opened with `UIApplication.open(_:)` if it is a URL.
+- `canShowOverlay` is checked right before a survey or message would appear (after the rule's delay).
+  Return `false` while your own paywall, onboarding or another modal flow is on screen: nothing appears,
+  nothing is reported, and the session's slot stays free, so a later event can try again.
+
+Both are called on the main thread and can be set at any time.
 
 ### Point at another server (local testing)
 
@@ -123,8 +159,9 @@ A survey's launch settings in the dashboard map to one rule: an **event name**, 
 
 When `event(name:)` is called:
 
-1. If a survey is already waiting for its delay, is on screen, or has been shown since the app was
-   launched, nothing happens and nothing is counted. **At most one survey is shown per app session.**
+1. If a survey or experiment is already waiting for its delay, is on screen, or has run since the app
+   was launched, nothing happens and nothing is counted. **At most one survey or experiment runs per
+   app session.** Experiments are checked first (see [below](#in-app-message-experiments)).
 2. Otherwise the SDK walks the surveys in the order the server sent them (priority order). A survey is
    skipped if the current time is outside its start/end dates, if it was completed on this device, or if
    it has no rule for this event name.
@@ -133,7 +170,8 @@ When `event(name:)` is called:
    and every later occurrence; "from 1 through 2" asks on the first two only.
 4. The first eligible survey is shown after its delay; surveys further down the list are not counted.
    If the app cannot present it when the delay elapses (app in the background, an alert or a transition
-   on screen), it is dropped and a later event may try again.
+   on screen, or `canShowOverlay` returns `false`), it is dropped, the event that selected it is not
+   counted, and a later event may try again.
 
 Counters are stored on the device, survive app restarts, and are dropped for surveys the server stops
 returning.
@@ -145,11 +183,33 @@ early does not complete it: a later session can show it again while the occurren
 use **Through occurrence** to limit repeats.
 
 ### When the SDK talks to the server
-- On `setup`, when the user ID changes, and on an `event` call when no request has been attempted for
-  6 hours in this app session. The refresh never delays the event that triggered it.
+- On `setup`, when the user ID or the attributes change, and on an `event` call when no request has
+  been attempted for 6 hours in this app session. The refresh never delays the event that triggered it.
 - If the server says there is nothing to show (a `4xx` such as `403` when the MobSur plan's monthly
-  tracked user limit is reached), the cached surveys are cleared. On network errors, timeouts, `408`,
-  `429` or `5xx`, the SDK keeps using the surveys it already has.
+  tracked user limit is reached), the cached surveys and experiments are cleared. On network errors,
+  timeouts, `408`, `429` or `5xx`, the SDK keeps using what it already has.
+
+## In-app message experiments
+
+Your team can run an experiment from MobSur: a short in-app message (optional image, title, body, a call
+to action and a dismiss button) shown to part of an audience, while the rest (the **control** arm) see
+nothing. Comparing the two arms shows what the message changes.
+
+- The server picks who is in the experiment from the platform, the app version and your
+  [attributes](#describe-the-person-attributes), assigns each person an arm once, and sends it with the
+  surveys.
+- Experiments use the same rules as surveys (event name, From/Through occurrence, delay) and are
+  checked **before** surveys on each `event(name:)` call. They share the one-per-session rule.
+- **Treatment:** after the delay the message appears in a bottom sheet, in system fonts and colors
+  (light and dark) with your app's tint color on the call to action. Tapping it calls `onAction`; the
+  dismiss button or a swipe closes it.
+- **Control:** nothing appears, but the exposure is still reported and the session's slot is used, so
+  both arms are measured under the same conditions.
+- Each experiment runs at most once per person on the device.
+
+The SDK reports `exposed`, `cta_tapped` and `dismissed` to MobSur. Events are queued on the device and
+sent in order; failed sends are retried with backoff (and at the next launch), so an offline exposure is
+still counted later. These calls do not count towards monthly tracked users.
 
 ## Identity and monthly tracked users
 
@@ -165,17 +225,32 @@ The framework ships a privacy manifest (`PrivacyInfo.xcprivacy`), which Xcode in
 privacy report:
 
 - **Tracking:** no; no tracking domains.
-- **Required-reason API:** `UserDefaults` (reason `CA92.1`). The SDK stores only the cached survey list,
-  the occurrence counters, completed survey ids and the user ID, under keys prefixed `MobSur_`.
+- **Required-reason API:** `UserDefaults` (reason `CA92.1`). The SDK stores only the cached surveys and
+  experiments, the occurrence counters, completed survey and experiment ids, the user ID, your
+  attributes and the experiment events waiting to be sent, under keys prefixed `MobSur_`.
 - **Collected data** (all linked to the user ID, none used for tracking):
   - *User ID*: the ID you pass (or the generated one) is sent with every request and stored by MobSur.
   - *Other User Content*: the answers people give in surveys.
-  - *Product Interaction*: when a survey was received, opened, started and completed.
+  - *Product Interaction*: when a survey was received, opened, started and completed, and when an
+    experiment message was shown, tapped or dismissed.
   - *Coarse Location*: MobSur derives the country from the request IP for targeting and reporting.
 
-Each request also sends your app's version, the platform (`ios`), the SDK version and the device's
-preferred languages. Event names and counts stay on the device. Use this list when you fill in your
-App Store privacy details.
+Each request also sends your app's version, the platform (`ios`), the SDK version, the device's
+preferred languages and the attributes you set with `setAttributes(_:)`. Declare whatever your
+attributes contain (for example subscription status) in your App Store privacy details too. Event names
+and counts stay on the device.
+
+## Migrating from 1.1.x
+
+1.2.0 is source-compatible with 1.1.x. Things to know:
+
+- **Minimum iOS is 15.0** (was 12.0).
+- Experiments are off until your team runs one in MobSur, so nothing changes for surveys-only apps
+  except the next point.
+- **A dropped survey no longer counts its event.** When a survey cannot appear after its delay, the
+  event that selected it is not counted, so a "from 1 through 1" rule gets another chance.
+- If your app has paywalls, onboarding or other full-screen flows, set `canShowOverlay` so neither
+  surveys nor messages appear on top of them.
 
 ## Migrating from 1.0.x
 

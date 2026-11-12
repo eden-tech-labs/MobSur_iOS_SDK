@@ -1,6 +1,51 @@
 # Changelog
 
-## 1.1.0 (unreleased)
+## 1.2.0
+
+In-app message experiments with a holdout, matching the Flutter SDK 2.1.1. Source-compatible with
+1.1.0 apart from the minimum iOS version.
+
+### Added
+- **In-app message experiments.** The fetch response's `experiments` list is parsed (unusable entries
+  are skipped one by one). `event(name:)` checks experiments before surveys, with the same occurrence
+  counting (counters per experiment), and experiments share the one-per-session rule with surveys.
+  - `treatment`: after the rule's delay, shows a native bottom sheet (optional image, title, body, call
+    to action, dismiss) in system fonts and colors, light and dark, with your app's tint color on the
+    call to action. Reports `exposed`.
+  - `control`: shows nothing, still reports `exposed`, and uses the session's slot.
+  - Each experiment runs at most once per person on the device.
+- `setAttributes(_:)`: strings, numbers and booleans, merged into the attributes kept on the device; a
+  `nil` value removes a key. They are sent with each fetch as the `attributes` query parameter (JSON).
+  A change fetches again without resetting event counts, and no experiment runs until that fetch
+  succeeds. Can be called before `setup`.
+- `onAction`: receives the call to action (for example `myapp://paywall`) after the sheet has closed.
+  Without it, the action is opened with `UIApplication.open(_:)`.
+- `canShowOverlay`: checked right before a survey or message would appear. Returning `false` skips it
+  without reporting anything or using the session's slot.
+- Experiment events (`exposed`, `cta_tapped`, `dismissed`) go to `POST /api/experiments/{id}/events`
+  through a persisted, in-order queue. Each event keeps a client-generated `event_id`, so retries are
+  idempotent, and the server it was created for, so a later `setup` with another base URL never
+  receives it. Failed sends are retried with backoff (5 s doubling up to 1 h, and again at the next
+  launch) until the server answers 2xx. Other 4xx answers (except 408/429) drop the event, and so does
+  7 days of the server refusing it. Only time between two refusals counts: an attempt that finds the
+  device offline ends the streak.
+
+### Changed
+- **Minimum iOS is 15.0** in the binary, `Package.swift` and the podspec. Xcode 27 cannot build for
+  older targets.
+- A survey or experiment that cannot appear when its delay elapses (no host UI, or `canShowOverlay`
+  said no) no longer counts the event that selected it, so a rule that matches a single occurrence
+  gets another chance.
+- Changing the user also clears the cached experiments and their counters, and drops a survey or
+  experiment still waiting for its delay. Attributes are kept, and experiments already run are
+  remembered per app ID and user ID, so switching accounts and back never runs one twice.
+- `canShowOverlay` is app code: after it returns `true`, the SDK checks again that the person, their
+  experiments and the pending decision are unchanged, and that the host UI can still show a sheet,
+  before showing anything. Both arms go through the same checks, so a gate that changes the screen
+  drops control just as it drops treatment.
+- Requests send `sdk=ios-1.2.0`.
+
+## 1.1.0
 
 Implements the shared MobSur mobile SDK contract, so iOS, Android and Flutter behave the same way.
 The public API is source-compatible with 1.0.x.
