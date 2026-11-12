@@ -33,12 +33,12 @@ Or in `Package.swift`:
 
 ### CocoaPods
 ```ruby
-pod 'MobSurSDK', '~> 1.1'
+pod 'MobSurSDK', :git => 'https://github.com/eden-tech-labs/MobSur_iOS_SDK.git', :tag => '1.2.0'
 ```
-Then run `pod install`.
+Then run `pod install`. To update, change the tag.
 
-CocoaPods trunk becomes read-only on December 2, 2026, so 1.1.x is the last MobSur release published
-there. Later versions ship through Swift Package Manager only.
+This installs a release straight from this repository. The CocoaPods trunk only has MobSurSDK 1.0.3,
+from 2022, and becomes read-only on December 2, 2026, so newer versions aren't published there.
 
 ### Manually
 Download `MobSur_iOS_SDK.xcframework.zip` from the
