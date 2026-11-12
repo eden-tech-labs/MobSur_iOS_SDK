@@ -1,8 +1,8 @@
 # Changelog
 
-## 1.2.0 (unreleased)
+## 1.2.0
 
-In-app message experiments with a holdout, matching the Flutter SDK 2.1.0. Source-compatible with
+In-app message experiments with a holdout, matching the Flutter SDK 2.1.1. Source-compatible with
 1.1.0 apart from the minimum iOS version.
 
 ### Added
@@ -40,7 +40,9 @@ In-app message experiments with a holdout, matching the Flutter SDK 2.1.0. Sourc
   experiment still waiting for its delay. Attributes are kept, and experiments already run are
   remembered per app ID and user ID, so switching accounts and back never runs one twice.
 - `canShowOverlay` is app code: after it returns `true`, the SDK checks again that the person, their
-  experiments and the pending decision are unchanged before showing anything.
+  experiments and the pending decision are unchanged, and that the host UI can still show a sheet,
+  before showing anything. Both arms go through the same checks, so a gate that changes the screen
+  drops control just as it drops treatment.
 - Requests send `sdk=ios-1.2.0`.
 
 ## 1.1.0
